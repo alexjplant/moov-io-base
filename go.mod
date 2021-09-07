@@ -14,7 +14,7 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.8
 	github.com/ory/dockertest/v3 v3.7.0
 	github.com/prometheus/client_golang v1.11.0
-	github.com/rickar/cal v1.0.5
+	github.com/rickar/cal/v2 v2.0.2
 	github.com/spf13/viper v1.8.1
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/sys v0.0.0-20210616094352-59db8d763f22 // indirect
