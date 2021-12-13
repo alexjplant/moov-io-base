@@ -1,1 +1,1 @@
-create table tests (id varchar(10))
+crsdfsdfsdeate table tests (id varchar(10))

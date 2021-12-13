@@ -41,8 +41,9 @@ func RunMigrations(logger log.Logger, config DatabaseConfig) error {
 		config.DatabaseName,
 		driver,
 	)
+
 	if err != nil {
-		return logger.Fatal().LogErrorf("Error running migration: %w", err).Err()
+		return logger.Fatal().LogErrorf("Error running migration: %w. Database error: %w", err).Err()
 	}
 
 	err = m.Up()
@@ -53,7 +54,8 @@ func RunMigrations(logger log.Logger, config DatabaseConfig) error {
 	case migrate.ErrNoChange:
 		logger.Info().Log("Database already at version")
 	default:
-		return logger.Fatal().LogErrorf("Error running migrations: %w", err).Err()
+		dbError := err.(database.Error).OrigErr
+		return logger.Fatal().LogErrorf("Error running migrations: %w. Database error: %w", err, dbError).Err()
 	}
 
 	logger.Info().Log("Migrations complete")
